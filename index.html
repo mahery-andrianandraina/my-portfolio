@@ -1652,6 +1652,15 @@ html[data-bg="gold"] .brand.solid,html[data-bg="gold"] .corner button,html[data-
 .sec-cta .gh{font-size:.95rem}
 @media (max-height:680px) and (min-width:1000px){.s-proj .sec-cta{margin-top:.6rem;padding:.45rem 1rem}.s-proj .h2::after{margin:.4rem auto}.s-proj .tag .proj__acts{margin-bottom:.7rem}}
 .hello{letter-spacing:.22em!important;padding-left:.22em!important}
+.h1.sig .w{padding:.05em .25em .32em .45em;margin:0 -.25em -.32em -.45em}
+@media (max-height:720px){.scroll-cue{display:none!important}}
+/* no flash of the default header before the photo loads */
+.js .header:not(.has-photo){background:#0f1517!important}
+.js .header:not(.has-photo)::before,.js .header:not(.has-photo) .bokeh{display:none!important}
+.header.has-photo::after{content:"";position:absolute;inset:0;background:#0f1517;pointer-events:none;z-index:1;animation:heroFade .8s ease-out forwards}
+@keyframes heroFade{to{opacity:0;visibility:hidden}}
+.header__box{z-index:3}
+@media (prefers-reduced-motion: reduce){.header.has-photo::after{display:none}}
 </style>
 </head>
 <body>
