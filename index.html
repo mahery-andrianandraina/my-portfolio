@@ -3527,5 +3527,31 @@ html[data-bg="gold"] .brand.solid,html[data-bg="gold"] .corner button,html[data-
   }
 })();
 </script>
+  <script>
+(function () {
+  const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxMc8ct_Dsuu-EeNYntJWSOk4qC5w3_ENVu3A053tLNZxOUYMzQQ33tYiFv_aRYmnU5rg/exec"; 
+  try {
+    // Ignorer tes propres visites : ouvre une fois ton site avec ?moi
+    if (location.search.includes("moi")) localStorage.setItem("ignorerMoi", "1");
+    if (localStorage.getItem("ignorerMoi")) return;
+    // Une seule notification par visite (pas une à chaque page)
+    if (sessionStorage.getItem("visiteNotifiee")) return;
+    sessionStorage.setItem("visiteNotifiee", "1");
+  } catch (e) {}
+
+  fetch(URL_SCRIPT, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({
+      page: location.href,
+      referrer: document.referrer,
+      langue: navigator.language,
+      ecran: screen.width + "x" + screen.height,
+      agent: navigator.userAgent
+    })
+  });
+})();
+</script>
 </body>
 </html>
